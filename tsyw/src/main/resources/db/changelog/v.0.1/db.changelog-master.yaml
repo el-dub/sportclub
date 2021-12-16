@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - include:
+      file: db.changelog-roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-users.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-categories.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-subscriptions.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-users-subscriptions.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-discounts.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-foreign-keys.yaml
+      relativeToChangelogFile: true

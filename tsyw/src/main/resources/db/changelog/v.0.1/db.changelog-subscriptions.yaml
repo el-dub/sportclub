@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-subscriptions-table
+      author: yelyzaveta_dubohryz
+      changes:
+        - createTable:
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: subscription_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: category_id
+                  type: UUID
+              - column:
+                  name: months_duration
+                  type: int
+              - column:
+                  name: price
+                  type: numeric(19,2)
+              - column:
+                  name: visits_number
+                  type: int

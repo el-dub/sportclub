@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-foreign-key-user-to-role
+      author: yelyzaveta_dubohryz
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: users
+            constraintName: fk_users_roles
+            referencedColumnNames: role_id
+            referencedTableName: roles
+  - changeSet:
+      id: create-foreign-key-subscription-to-category
+      author: yelyzaveta_dubohryz
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category_id
+            baseTableName: subscriptions
+            constraintName: fk_subscriptions_categories
+            referencedColumnNames: category_id
+            referencedTableName: categories
+  - changeSet:
+      id: create-foreign-key-discount-to-subscription
+      author: yelyzaveta_dubohryz
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: subscription_id
+            baseTableName: discounts
+            constraintName: fk_discounts_subscriptions
+            referencedColumnNames: subscription_id
+            referencedTableName: subscriptions
+  - changeSet:
+      id: create-foreign-key-user-subscription-to-user
+      author: yelyzaveta_dubohryz
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: users_subscriptions
+            constraintName: fk_users_subscriptions_users
+            referencedColumnNames: user_id
+            referencedTableName: users
+  - changeSet:
+      id: create-foreign-key-user-subscription-to-subscription
+      author: yelyzaveta_dubohryz
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: subscription_id
+            baseTableName: users_subscriptions
+            constraintName: fk_users_subscriptions_subscriptions
+            referencedColumnNames: subscription_id
+            referencedTableName: subscriptions

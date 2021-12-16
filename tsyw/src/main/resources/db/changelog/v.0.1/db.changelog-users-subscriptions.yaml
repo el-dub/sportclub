@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-uesers-subscriptions-table
+      author: yelyzaveta_dubohryz
+      changes:
+        - createTable:
+            tableName: users_subscriptions
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: UUID
+              - column:
+                  name: subscription_id
+                  type: UUID
+              - column:
+                  name: start_time
+                  type: timestamp
+              - column:
+                  name: end_time
+                  type: timestamp
+              - column:
+                  name: paid
+                  type: boolean
+              - column:
+                  name: visits_number
+                  type: int

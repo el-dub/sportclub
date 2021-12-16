@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-discounts-table
+      author: yelyzaveta_dubohryz
+      changes:
+        - createTable:
+            tableName: discounts
+            columns:
+              - column:
+                  name: discount_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: subscription_id
+                  type: UUID
+              - column:
+                  name: name
+                  type: varchar(100)
+              - column:
+                  name: start_time
+                  type: timestamp
+              - column:
+                  name: end_time
+                  type: timestamp
+              - column:
+                  name: percent
+                  type: int

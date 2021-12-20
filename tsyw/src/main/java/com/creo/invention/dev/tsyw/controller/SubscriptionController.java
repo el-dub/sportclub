@@ -2,6 +2,7 @@ package com.creo.invention.dev.tsyw.controller;
 
 import com.creo.invention.dev.tsyw.dto.subscription.CreateSubscriptionDto;
 import com.creo.invention.dev.tsyw.dto.subscription.SubscriptionDto;
+import com.creo.invention.dev.tsyw.dto.subscription.UpdateSubscriptionDto;
 import com.creo.invention.dev.tsyw.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,8 +35,8 @@ public class SubscriptionController {
     }
 
     @PutMapping
-    public SubscriptionDto updateSubscription(@RequestBody SubscriptionDto subscriptionDto) {
-        return subscriptionService.updateSubscription(subscriptionDto);
+    public SubscriptionDto updateSubscription(@RequestBody UpdateSubscriptionDto updateSubscriptionDto) {
+        return subscriptionService.updateSubscription(updateSubscriptionDto);
     }
 
     @DeleteMapping("/{subscriptionId}")

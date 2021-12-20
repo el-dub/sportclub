@@ -2,6 +2,7 @@ package com.creo.invention.dev.tsyw.dto.mapper;
 
 import com.creo.invention.dev.tsyw.dto.subscription.SubscriptionDto;
 import com.creo.invention.dev.tsyw.dto.subscription.CreateSubscriptionDto;
+import com.creo.invention.dev.tsyw.dto.subscription.UpdateSubscriptionDto;
 import com.creo.invention.dev.tsyw.model.Subscription;
 import org.mapstruct.Mapper;
 
@@ -16,5 +17,5 @@ public interface SubscriptionMapper {
 
     Subscription fromCreateDto(CreateSubscriptionDto createSubscriptionDto);
 
-    Subscription fromDto(SubscriptionDto subscriptionDto);
+    Subscription fromUpdateDto(UpdateSubscriptionDto subscriptionDto);
 }

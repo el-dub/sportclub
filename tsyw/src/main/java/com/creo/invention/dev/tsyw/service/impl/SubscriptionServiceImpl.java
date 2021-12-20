@@ -3,6 +3,7 @@ package com.creo.invention.dev.tsyw.service.impl;
 import com.creo.invention.dev.tsyw.dto.subscription.SubscriptionDto;
 import com.creo.invention.dev.tsyw.dto.mapper.SubscriptionMapper;
 import com.creo.invention.dev.tsyw.dto.subscription.CreateSubscriptionDto;
+import com.creo.invention.dev.tsyw.dto.subscription.UpdateSubscriptionDto;
 import com.creo.invention.dev.tsyw.exception.NotFoundException;
 import com.creo.invention.dev.tsyw.model.Category;
 import com.creo.invention.dev.tsyw.model.Subscription;
@@ -44,13 +45,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public SubscriptionDto updateSubscription(SubscriptionDto subscriptionDto) {
-        UUID subscriptionId = subscriptionDto.getSubscriptionId();
+    public SubscriptionDto updateSubscription(UpdateSubscriptionDto updateSubscriptionDto) {
+        UUID subscriptionId = updateSubscriptionDto.getSubscriptionId();
         if (!subscriptionRepository.existsById(subscriptionId)) {
             throw new NotFoundException(String.format("Subscription with id %s not found", subscriptionId));
         }
-        Category category = findCategoryById(subscriptionDto.getCategoryDto().getCategoryId());
-        Subscription subscription = subscriptionMapper.fromDto(subscriptionDto);
+        Category category = findCategoryById(updateSubscriptionDto.getCategoryId());
+        Subscription subscription = subscriptionMapper.fromUpdateDto(updateSubscriptionDto);
         subscription.setCategory(category);
 
         return subscriptionMapper.toDto(subscriptionRepository.save(subscription));

@@ -2,6 +2,7 @@ package com.creo.invention.dev.tsyw.service;
 
 import com.creo.invention.dev.tsyw.dto.subscription.SubscriptionDto;
 import com.creo.invention.dev.tsyw.dto.subscription.CreateSubscriptionDto;
+import com.creo.invention.dev.tsyw.dto.subscription.UpdateSubscriptionDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,5 +15,5 @@ public interface SubscriptionService {
 
     void deleteSubscriptionById(UUID subscriptionId);
 
-    SubscriptionDto updateSubscription(SubscriptionDto subscriptionDto);
+    SubscriptionDto updateSubscription(UpdateSubscriptionDto updateSubscriptionDto);
 }

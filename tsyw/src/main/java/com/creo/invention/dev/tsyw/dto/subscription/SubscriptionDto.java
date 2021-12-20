@@ -10,8 +10,7 @@ import java.util.UUID;
 public class SubscriptionDto {
 
     private UUID subscriptionId;
-    private String name;
-    private CategoryDto categoryDto;
+    private CategoryDto category;
     private Integer monthsDuration;
     private BigDecimal price;
     private Integer visitsNumber;

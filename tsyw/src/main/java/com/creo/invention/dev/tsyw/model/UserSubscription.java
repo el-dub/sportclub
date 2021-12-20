@@ -1,5 +1,6 @@
 package com.creo.invention.dev.tsyw.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,6 +18,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "users_subscriptions")
 @Data
+@Builder
 public class UserSubscription {
 
     @Id

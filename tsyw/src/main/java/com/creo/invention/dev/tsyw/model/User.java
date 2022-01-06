@@ -52,4 +52,8 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<UserSubscription> userSubscriptions;
+
+    @Column(name = "password_hash")
+    private String passwordHash;
+
 }

@@ -6,7 +6,7 @@ spring:
     open-in-view: false
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/sportclub}"
+    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:6543/sportclub}"
     username: "${SPRING_DATASOURCE_USERNAME:postgres}"
     password: "${SPRING_DATASOURCE_PASSWORD:root}"
 

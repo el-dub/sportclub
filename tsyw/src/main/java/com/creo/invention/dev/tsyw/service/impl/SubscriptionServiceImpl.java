@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -45,16 +46,19 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public SubscriptionDto updateSubscription(UpdateSubscriptionDto updateSubscriptionDto) {
-        UUID subscriptionId = updateSubscriptionDto.getSubscriptionId();
-        if (!subscriptionRepository.existsById(subscriptionId)) {
-            throw new NotFoundException(String.format("Subscription with id %s not found", subscriptionId));
-        }
-        Category category = findCategoryById(updateSubscriptionDto.getCategoryId());
-        Subscription subscription = subscriptionMapper.fromUpdateDto(updateSubscriptionDto);
-        subscription.setCategory(category);
+    public List<SubscriptionDto> updateSubscriptions(List<UpdateSubscriptionDto> updateSubscriptionDtoList) {
+        updateSubscriptionDtoList.forEach(dto -> {
+            Optional<Subscription> subscriptionOptional = subscriptionRepository
+                    .findById(dto.getSubscriptionId());
+            if (subscriptionOptional.isPresent()) {
+                Subscription subscription = subscriptionOptional.get();
+                subscription.setPrice(dto.getPrice());
+                subscriptionRepository.save(subscription);
+            }
+                }
+        );
 
-        return subscriptionMapper.toDto(subscriptionRepository.save(subscription));
+        return subscriptionMapper.toDtoList(subscriptionRepository.findAll());
     }
 
     private Category findCategoryById(UUID categoryId) {

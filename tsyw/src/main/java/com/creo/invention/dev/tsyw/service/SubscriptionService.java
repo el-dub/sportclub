@@ -15,5 +15,5 @@ public interface SubscriptionService {
 
     void deleteSubscriptionById(UUID subscriptionId);
 
-    SubscriptionDto updateSubscription(UpdateSubscriptionDto updateSubscriptionDto);
+    List<SubscriptionDto> updateSubscriptions(List<UpdateSubscriptionDto> updateSubscriptionDtoList);
 }

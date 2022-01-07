@@ -9,8 +9,5 @@ import java.util.UUID;
 public class UpdateSubscriptionDto {
 
     private UUID subscriptionId;
-    private UUID categoryId;
-    private Integer monthsDuration;
     private BigDecimal price;
-    private Integer visitsNumber;
 }

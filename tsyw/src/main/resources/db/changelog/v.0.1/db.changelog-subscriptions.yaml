@@ -15,11 +15,14 @@ databaseChangeLog:
                   name: category_id
                   type: UUID
               - column:
-                  name: months_duration
-                  type: int
+                  name: subcategory_id
+                  type: UUID
               - column:
                   name: price
                   type: numeric(19,2)
               - column:
                   name: visits_number
+                  type: int
+              - column:
+                  name: months_duration
                   type: int

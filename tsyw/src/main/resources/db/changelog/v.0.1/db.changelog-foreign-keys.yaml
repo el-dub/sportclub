@@ -20,6 +20,16 @@ databaseChangeLog:
             referencedColumnNames: category_id
             referencedTableName: categories
   - changeSet:
+      id: create-foreign-key-subscription-to-subcategory
+      author: yelyzaveta_dubohryz
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: subcategory_id
+            baseTableName: subscriptions
+            constraintName: fk_subscriptions_subcategories
+            referencedColumnNames: subcategory_id
+            referencedTableName: subcategories
+  - changeSet:
       id: create-foreign-key-discount-to-subscription
       author: yelyzaveta_dubohryz
       changes:

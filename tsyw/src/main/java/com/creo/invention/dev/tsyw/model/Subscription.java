@@ -34,6 +34,10 @@ public class Subscription {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory_id", nullable = false)
+    private Subcategory subcategory;
+
     @Column(name = "months_duration")
     private Integer monthsDuration;
 

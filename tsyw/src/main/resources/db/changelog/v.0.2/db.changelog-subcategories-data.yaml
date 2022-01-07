@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-subcategories-data
+      author: yelyzaveta_dubohryz
+      changes:
+        - insert:
+            tableName: subcategories
+            columns:
+              - column:
+                  name: subcategory_id
+                  value: "c4e80cfd-140d-41f5-9c6f-c13dcbaa748c"
+              - column:
+                  name: name
+                  value: "8 visits"
+        - insert:
+            tableName: subcategories
+            columns:
+              - column:
+                  name: subcategory_id
+                  value: "6dc532f8-ca5f-4289-9528-913823ec0678"
+              - column:
+                  name: name
+                  value: "10 visits"
+        - insert:
+            tableName: subcategories
+            columns:
+              - column:
+                  name: subcategory_id
+                  value: "c357e4d6-8e1a-4665-91c8-5b94c4d01b3a"
+              - column:
+                  name: name
+                  value: "12 visits"
+        - insert:
+            tableName: subcategories
+            columns:
+              - column:
+                  name: subcategory_id
+                  value: "d86c5ee7-86fc-4d7e-9108-a8b52fdb3793"
+              - column:
+                  name: name
+                  value: "Unlimited"
+        - insert:
+            tableName: subcategories
+            columns:
+              - column:
+                  name: subcategory_id
+                  value: "dbbe89c7-4497-4c58-83a9-672cdfc35dc2"
+              - column:
+                  name: name
+                  value: "Single visit"

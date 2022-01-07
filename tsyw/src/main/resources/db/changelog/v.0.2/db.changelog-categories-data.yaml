@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-categories-data
+      author: yelyzaveta_dubohryz
+      changes:
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: category_id
+                  value: "c19db056-d0ae-4256-a84f-8c95c2f73960"
+              - column:
+                  name: name
+                  value: "Individual Training"
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: category_id
+                  value: "fc84b314-1ae1-4f4d-b779-848ddbe64e07"
+              - column:
+                  name: name
+                  value: "Training with a coach"
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: category_id
+                  value: "118ae068-7d79-4f6e-a45b-06c239536cf6"
+              - column:
+                  name: name
+                  value: "Crossfit (groups of 2-4 people)"
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: category_id
+                  value: "df9ceca4-d448-44c9-9051-24860a612c1d"
+              - column:
+                  name: name
+                  value: "Personal coach"

@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: db.changelog-categories-data.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-subcategories-data.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: db.changelog-subscriptions-data.yaml
+      relativeToChangelogFile: true

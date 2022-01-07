@@ -35,8 +35,8 @@ public class SubscriptionController {
     }
 
     @PutMapping
-    public SubscriptionDto updateSubscription(@RequestBody UpdateSubscriptionDto updateSubscriptionDto) {
-        return subscriptionService.updateSubscription(updateSubscriptionDto);
+    public List<SubscriptionDto> updateSubscriptions(@RequestBody List<UpdateSubscriptionDto> updateSubscriptionDtoList) {
+        return subscriptionService.updateSubscriptions(updateSubscriptionDtoList);
     }
 
     @DeleteMapping("/{subscriptionId}")

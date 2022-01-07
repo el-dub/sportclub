@@ -40,7 +40,7 @@ public class User {
     @Column(name = "phone", length = 50, nullable = false)
     private String phone;
 
-    @Column(name = "email", length = 50, nullable = false)
+    @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)

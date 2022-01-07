@@ -1,6 +1,9 @@
 package com.creo.invention.dev.tsyw.service;
 
 import com.creo.invention.dev.tsyw.dto.user.CreateUserDto;
+import com.creo.invention.dev.tsyw.dto.user.LoginUserDto;
+import com.creo.invention.dev.tsyw.exception.WrongCredentialsException;
+import com.creo.invention.dev.tsyw.model.User;
 
 public interface UserService {
 
@@ -8,5 +11,12 @@ public interface UserService {
      * @return jwt token
      */
     String createUser(CreateUserDto dto);
+
+    /**
+     * @return jwt token
+     */
+    String validateUser(LoginUserDto dto) throws WrongCredentialsException;
+
+    User getUserFromToken(String token) throws WrongCredentialsException;
 
 }

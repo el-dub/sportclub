@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1641645325020-11" author="Leonid (generated)">
+        <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users" />
+    </changeSet>
+    <changeSet id="1641645325020-12" author="Leonid (generated)">
+        <dropColumn columnName="role" tableName="users" />
+    </changeSet>
+    <changeSet id="1641645325020-1" author="Leonid (generated)">
+        <addNotNullConstraint columnDataType="UUID" columnName="category_id" tableName="subscriptions"
+            validate="true" />
+    </changeSet>
+    <changeSet id="1641645325020-2" author="Leonid (generated)">
+        <modifyDataType columnName="name" newDataType="VARCHAR(255)" tableName="categories" />
+    </changeSet>
+    <changeSet id="1641645325020-3" author="Leonid (generated)">
+        <dropNotNullConstraint columnDataType="varchar(255)" columnName="name" tableName="categories" />
+    </changeSet>
+    <changeSet id="1641645325020-4" author="Leonid (generated)">
+        <modifyDataType columnName="name" newDataType="VARCHAR(255)" tableName="discounts" />
+    </changeSet>
+    <changeSet id="1641645325020-5" author="Leonid (generated)">
+        <modifyDataType columnName="name" newDataType="VARCHAR(255)" tableName="roles" />
+    </changeSet>
+    <changeSet id="1641645325020-6" author="Leonid (generated)">
+        <dropNotNullConstraint columnDataType="varchar(255)" columnName="name" tableName="roles" />
+    </changeSet>
+    <changeSet id="1641645325020-7" author="Leonid (generated)">
+        <modifyDataType columnName="password_hash" newDataType="VARCHAR(255)" tableName="users" />
+    </changeSet>
+    <changeSet id="1641645325020-8" author="Leonid (generated)">
+        <modifyDataType columnName="price" newDataType="DECIMAL" tableName="subscriptions" />
+    </changeSet>
+    <changeSet id="1641645325020-9" author="Leonid (generated)">
+        <addNotNullConstraint columnDataType="integer" columnName="role_id" tableName="users" validate="true" />
+    </changeSet>
+    <changeSet id="1641645325020-10" author="Leonid (generated)">
+        <addDefaultValue columnDataType="int" columnName="role_id" defaultValueNumeric="1" tableName="users" />
+    </changeSet>
+
+</databaseChangeLog>

@@ -40,11 +40,11 @@ public class User {
     @Column(name = "phone", length = 50, nullable = false)
     private String phone;
 
-    @Column(name = "email", length = 50, nullable = false)
+    @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", nullable = false)
+    @JoinColumn(name = "role_id", nullable = false, columnDefinition = "integer default 1")
     private Role role;
 
     @Column(name = "birthday")
@@ -52,4 +52,8 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<UserSubscription> userSubscriptions;
+
+    @Column(name = "password_hash")
+    private String passwordHash;
+
 }

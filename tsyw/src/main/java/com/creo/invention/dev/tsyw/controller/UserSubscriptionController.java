@@ -39,14 +39,10 @@ public class UserSubscriptionController {
     }
 
     @PostMapping
-    public UserSubscriptionDto createUserSubscription(@RequestBody CreateUserSubscriptionDto createUserSubscriptionDto) {
-        return userSubscriptionService.addSubscriptionToUser(createUserSubscriptionDto);
+    public UserSubscriptionDto createUserSubscription(@RequestHeader("authorization") String token, @RequestBody CreateUserSubscriptionDto createUserSubscriptionDto) throws WrongCredentialsException {
+        var userId = userService.getUserIdFromToken(token.split(" ")[1].trim());
+        return userSubscriptionService.addSubscriptionToUser(userId, createUserSubscriptionDto);
     }
-
-    /*@GetMapping("/{userId}")
-    public List<UserSubscriptionDto> getUserSubscriptionsByUserId(@PathVariable UUID userId) {
-        return userSubscriptionService.getSubscriptionsByUserId(userId);
-    }*/
 
     @GetMapping("/visit/{userSubscriptionId}")
     public UserSubscriptionDto removeOneVisit(@PathVariable UUID userSubscriptionId) {

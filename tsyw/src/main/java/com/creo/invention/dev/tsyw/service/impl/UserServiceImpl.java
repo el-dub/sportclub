@@ -37,7 +37,9 @@ public class UserServiceImpl implements UserService {
 
         user.setPasswordHash(encoder.encode(dto.getPassword()));
 
-        user.setRole(roleRepository.getByRoleName("USER"));
+        var role = new Role();
+        role.setRoleId(1);
+        user.setRole(role);
 
         user = repository.save(user);
 

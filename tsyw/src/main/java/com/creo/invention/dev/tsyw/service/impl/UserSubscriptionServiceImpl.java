@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -44,6 +45,22 @@ public class UserSubscriptionServiceImpl implements UserSubscriptionService {
                 .build();
         return userSubscriptionMapper.toDto(userSubscriptionRepository.save(userSubscription));
     }
+
+    @Override
+    public List<UserSubscriptionDto> getSubscriptionsByUserId(UUID userId) {
+        return userSubscriptionMapper.toDtoList(userSubscriptionRepository.findAllByUserUserId(userId));
+    }
+
+    @Override
+    public UserSubscriptionDto removeOneVisit(UUID userSubscriptionId) {
+        UserSubscription userSubscription = userSubscriptionRepository.findById(userSubscriptionId)
+                .orElseThrow(() -> new NotFoundException(String.format("UserSubscription with id %s not found", userSubscriptionId)));
+        Integer currentVisitsNumber = userSubscription.getVisitsNumber();
+        if (currentVisitsNumber != null && currentVisitsNumber >= 1) {
+            userSubscription.setVisitsNumber(currentVisitsNumber - 1);
+        }
+        return userSubscriptionMapper.toDto(userSubscriptionRepository.save(userSubscription));
+     }
 
     private User findUser(UUID userId) {
         return userRepository.findById(userId)

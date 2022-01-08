@@ -1,7 +1,9 @@
 package com.creo.invention.dev.tsyw.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -19,6 +21,8 @@ import java.util.UUID;
 @Table(name = "users_subscriptions")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserSubscription {
 
     @Id

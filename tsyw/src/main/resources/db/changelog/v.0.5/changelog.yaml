@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-users-data
+      author: leonid
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  value: "09d174bb-ba29-47c7-af8e-35e6ada05000"
+              - column:
+                  name: first_name
+                  value: "Petr"
+              - column:
+                  name: last_name
+                  value: "Petrov"
+              - column:
+                  name: email
+                  value: "admin@admin.org"
+              - column:
+                  name: phone
+                  value: "0638794756"
+              - column:
+                  name: role_id
+                  value: 2
+              - column:
+                  name: birthday
+                  value: "1998.10.11"
+              - column:
+                  name: password_hash
+                  value: $2a$10$wTTjZaKuTBvUqxX35OewHODgz8lRUNol7q6qJ5xT4Er80wWMP5yrG

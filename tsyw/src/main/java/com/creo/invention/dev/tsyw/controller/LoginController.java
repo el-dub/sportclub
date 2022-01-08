@@ -5,6 +5,8 @@ import com.creo.invention.dev.tsyw.dto.user.LoginUserDto;
 import com.creo.invention.dev.tsyw.exception.WrongCredentialsException;
 import com.creo.invention.dev.tsyw.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,11 +18,11 @@ public class LoginController {
     private final UserService service;
 
     @PostMapping
-    public String authenticateUser(@RequestBody LoginUserDto dto) {
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginUserDto dto) {
         try {
-            return service.validateUser(dto);
+            return new ResponseEntity<>(service.validateUser(dto), HttpStatus.OK);
         } catch (WrongCredentialsException e) {
-            return "{\"error\": 1}";
+            return new ResponseEntity<>("{\"error\": 1}", HttpStatus.BAD_REQUEST);
         }
     }
 

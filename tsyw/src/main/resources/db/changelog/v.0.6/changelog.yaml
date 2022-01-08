@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id:  fix-admin
+      author:  leonid
+      changes:
+        -  update:
+             columns:
+               -  column:
+                    name:  role_id
+                    valueNumeric:  1
+             schemaName:  public
+             tableName:  users
+             where:  user_id='09d174bb-ba29-47c7-af8e-35e6ada05000'

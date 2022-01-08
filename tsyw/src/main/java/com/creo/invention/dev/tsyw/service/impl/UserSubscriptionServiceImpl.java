@@ -31,8 +31,8 @@ public class UserSubscriptionServiceImpl implements UserSubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
 
     @Override
-    public UserSubscriptionDto addSubscriptionToUser(CreateUserSubscriptionDto createUserSubscriptionDto) {
-        User user = findUser(createUserSubscriptionDto.getUserId());
+    public UserSubscriptionDto addSubscriptionToUser(UUID userId, CreateUserSubscriptionDto createUserSubscriptionDto) {
+        User user = findUser(userId);
         Subscription subscription = findSubscription(createUserSubscriptionDto.getSubscriptionId());
         LocalDateTime startDateTime = createUserSubscriptionDto.getStartDate().atStartOfDay();
         UserSubscription userSubscription = UserSubscription.builder()

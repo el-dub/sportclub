@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 public class CreateUserSubscriptionDto {
-    UUID userId;
+    // UUID userId;
     UUID subscriptionId;
     LocalDate startDate;
     Boolean paid = false;

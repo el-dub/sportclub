@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.UUID;
 
 @Service
@@ -71,7 +72,10 @@ public class UserServiceImpl implements UserService {
                 .build();
         var decodedToken = validator.verify(token);
 
-        var id = UUID.fromString(decodedToken.getClaim("uuid").toString());
+        var uuidString = decodedToken.getClaim("uuid").toString();
+        uuidString = uuidString.substring(1, uuidString.length() - 1);
+
+        var id = parseUUID(uuidString);
         var user = repository.findUserByUserId(id);
 
         return user;
@@ -83,6 +87,19 @@ public class UserServiceImpl implements UserService {
                 .withClaim("role", user.getRole().getRoleName())
                 .withClaim("full_name", user.getFirstName() + " " + user.getLastName())
                 .sign(Algorithm.HMAC256(JWT_SECRET.getBytes()));
+    }
+
+    /**
+     * an alternative to UUID.fromString() that doesn't fail
+     */
+    private static UUID parseUUID(String str) {
+        System.out.println(str);
+        String s2 = str.replace("-", "");
+        UUID uuid = new UUID(
+                new BigInteger(s2.substring(0, 16), 16).longValue(),
+                new BigInteger(s2.substring(16), 16).longValue());
+        System.out.println(uuid);
+        return uuid;
     }
 
 }

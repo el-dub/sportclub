@@ -44,6 +44,7 @@ public class UserSubscriptionController {
         return userSubscriptionService.addSubscriptionToUser(userId, createUserSubscriptionDto);
     }
 
+
     @GetMapping("/visit/{userSubscriptionId}")
     public UserSubscriptionDto removeOneVisit(@PathVariable UUID userSubscriptionId) {
         return userSubscriptionService.removeOneVisit(userSubscriptionId);

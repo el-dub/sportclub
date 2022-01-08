@@ -43,10 +43,10 @@ public class UserSubscriptionController {
         return userSubscriptionService.addSubscriptionToUser(createUserSubscriptionDto);
     }
 
-    @GetMapping("/{userId}")
+    /*@GetMapping("/{userId}")
     public List<UserSubscriptionDto> getUserSubscriptionsByUserId(@PathVariable UUID userId) {
         return userSubscriptionService.getSubscriptionsByUserId(userId);
-    }
+    }*/
 
     @GetMapping("/visit/{userSubscriptionId}")
     public UserSubscriptionDto removeOneVisit(@PathVariable UUID userSubscriptionId) {

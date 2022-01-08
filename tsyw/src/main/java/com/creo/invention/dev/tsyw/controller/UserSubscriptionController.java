@@ -22,7 +22,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/user-subscriptions")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class UserSubscriptionController {
 
     private final UserSubscriptionService userSubscriptionService;

@@ -13,7 +13,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/subscriptions")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class SubscriptionController {
 
     private final SubscriptionService subscriptionService;

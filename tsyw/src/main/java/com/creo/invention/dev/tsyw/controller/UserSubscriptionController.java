@@ -29,19 +29,14 @@ public class UserSubscriptionController {
     private final UserService userService;
 
     @GetMapping
-    String getUserSubscriptions(@RequestHeader("authorization") String token) {
+    List<UserSubscriptionDto> getUserSubscriptions(@RequestHeader("authorization") String token) {
         try {
-            var user = userService.getUserFromToken(token.split(" ")[1].trim());
-            // todo
-            return user.getFirstName();
+            var userId = userService.getUserIdFromToken(token.split(" ")[1].trim());
+            return userSubscriptionService.getSubscriptionsByUserId(userId);
         } catch (WrongCredentialsException e) {
-            return "{\"error\": 1}";
+            return null;
         }
     }
-
-
-
-    private final UserSubscriptionService userSubscriptionService;
 
     @PostMapping
     public UserSubscriptionDto createUserSubscription(@RequestBody CreateUserSubscriptionDto createUserSubscriptionDto) {

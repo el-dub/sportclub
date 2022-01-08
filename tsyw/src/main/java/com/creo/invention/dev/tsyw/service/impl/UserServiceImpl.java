@@ -68,6 +68,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserFromToken(String token) throws WrongCredentialsException {
         // i know it's not supposed to be here but i'm too lazy to find a better place for it (not too lazy to write this comment tho)
+
+        return repository.findUserByUserId(getUserIdFromToken(token));
+    }
+
+    @Override
+    public UUID getUserIdFromToken(String token) throws WrongCredentialsException {
         var validator = JWT.require(Algorithm.HMAC256(JWT_SECRET.getBytes()))
                 .build();
         var decodedToken = validator.verify(token);
@@ -75,10 +81,7 @@ public class UserServiceImpl implements UserService {
         var uuidString = decodedToken.getClaim("uuid").toString();
         uuidString = uuidString.substring(1, uuidString.length() - 1);
 
-        var id = parseUUID(uuidString);
-        var user = repository.findUserByUserId(id);
-
-        return user;
+        return parseUUID(uuidString);
     }
 
     private String generateJwtForUser(User user) {

@@ -5,6 +5,8 @@ import com.creo.invention.dev.tsyw.dto.user.LoginUserDto;
 import com.creo.invention.dev.tsyw.exception.WrongCredentialsException;
 import com.creo.invention.dev.tsyw.model.User;
 
+import java.util.UUID;
+
 public interface UserService {
 
     /**
@@ -18,5 +20,7 @@ public interface UserService {
     String validateUser(LoginUserDto dto) throws WrongCredentialsException;
 
     User getUserFromToken(String token) throws WrongCredentialsException;
+
+    UUID getUserIdFromToken(String token) throws WrongCredentialsException;
 
 }

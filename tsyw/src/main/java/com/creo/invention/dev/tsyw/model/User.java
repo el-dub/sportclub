@@ -43,8 +43,8 @@ public class User {
     @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", nullable = false, columnDefinition = "integer default 1")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id",  nullable = false, columnDefinition = "integer default 1")
     private Role role;
 
     @Column(name = "birthday")

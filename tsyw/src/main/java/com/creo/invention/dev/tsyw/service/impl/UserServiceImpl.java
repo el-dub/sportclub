@@ -37,13 +37,9 @@ public class UserServiceImpl implements UserService {
 
         user.setPasswordHash(encoder.encode(dto.getPassword()));
 
-        user = repository.save(user);
+        user.setRole(roleRepository.getByRoleName("USER"));
 
-        // TODO: remove this kostyl
-        var role = new Role();
-        role.setRoleId(1);
-        role.setRoleName("user");
-        user.setRole(role);
+        user = repository.save(user);
 
         return generateJwtForUser(user);
     }

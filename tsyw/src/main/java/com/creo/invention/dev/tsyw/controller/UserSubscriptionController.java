@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserSubscriptionController {
 
-    private UserSubscriptionService service;
-    private UserService userService;
+    private final UserSubscriptionService service;
+    private final UserService userService;
 
     @GetMapping
     String getUserSubscriptions(@RequestHeader("authorization") String token) {
         try {
-            var user = userService.getUserFromToken(token);
-            //
-            return "todo";
+            var user = userService.getUserFromToken(token.split(" ")[1].trim());
+            // todo
+            return user.getFirstName();
         } catch (WrongCredentialsException e) {
             return "{\"error\": 1}";
         }

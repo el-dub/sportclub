@@ -52,11 +52,6 @@ public class UserServiceImpl implements UserService {
             throw new WrongCredentialsException("");
 
         if (encoder.matches(dto.getPassword(), userWithEmail.getPasswordHash())) {
-            // TODO: fix role not loading
-            var role = new Role();
-            role.setRoleId(1);
-            role.setRoleName("user");
-            userWithEmail.setRole(role);
             return generateJwtForUser(userWithEmail);
         }
 

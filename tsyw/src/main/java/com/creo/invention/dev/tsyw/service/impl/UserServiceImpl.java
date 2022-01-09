@@ -2,9 +2,11 @@ package com.creo.invention.dev.tsyw.service.impl;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.creo.invention.dev.tsyw.dto.mapper.UserMapper;
 import com.creo.invention.dev.tsyw.dto.user.CreateUserDto;
 import com.creo.invention.dev.tsyw.dto.user.LoginUserDto;
+import com.creo.invention.dev.tsyw.dto.user.UserDto;
 import com.creo.invention.dev.tsyw.exception.WrongCredentialsException;
 import com.creo.invention.dev.tsyw.model.Role;
 import com.creo.invention.dev.tsyw.model.User;
@@ -67,14 +69,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UUID getUserIdFromToken(String token) throws WrongCredentialsException {
-        var validator = JWT.require(Algorithm.HMAC256(JWT_SECRET.getBytes()))
-                .build();
-        var decodedToken = validator.verify(token);
+        var decodedToken = decodeToken(token);
 
         var uuidString = decodedToken.getClaim("uuid").toString();
         uuidString = uuidString.substring(1, uuidString.length() - 1);
 
         return parseUUID(uuidString);
+    }
+
+    @Override
+    public boolean isAdminWithToken(String token) {
+        var decodedToken = decodeToken(token);
+        var roleStr = decodedToken.getClaim("role").asString();
+        return roleStr.equalsIgnoreCase("ADMIN");
+    }
+
+    @Override
+    public UserDto getUserDetailsById(UUID id) {
+        return userMapper.toDto(repository.findUserByUserId(id));
+    }
+
+    private DecodedJWT decodeToken(String token) {
+        var validator = JWT.require(Algorithm.HMAC256(JWT_SECRET.getBytes()))
+                .build();
+        return validator.verify(token);
     }
 
     private String generateJwtForUser(User user) {

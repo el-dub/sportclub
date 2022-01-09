@@ -13,4 +13,6 @@ public interface UserSubscriptionService {
     List<UserSubscriptionDto> getSubscriptionsByUserId(UUID userId);
 
     UserSubscriptionDto removeOneVisit(UUID userSubscriptionId);
+
+    void deleteUserSubscription(UUID userSubscriptionId);
 }

@@ -50,6 +50,16 @@ public class UserSubscriptionController {
         return userSubscriptionService.addSubscriptionToUser(createUserSubscriptionDto);
     }
 
+    @DeleteMapping("/delete/{userSubscriptionId}")
+    public void deleteUserSubscription(@PathVariable UUID userSubscriptionId) {
+        userSubscriptionService.deleteUserSubscription(userSubscriptionId);
+    }
+
+    @PatchMapping("/update")
+    public void updateUserSubscription() {
+
+    }
+
 
     @GetMapping("/visit/{userSubscriptionId}")
     public UserSubscriptionDto removeOneVisit(@PathVariable UUID userSubscriptionId) {

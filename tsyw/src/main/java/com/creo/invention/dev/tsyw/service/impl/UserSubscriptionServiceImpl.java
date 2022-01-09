@@ -62,6 +62,11 @@ public class UserSubscriptionServiceImpl implements UserSubscriptionService {
         return userSubscriptionMapper.toDto(userSubscriptionRepository.save(userSubscription));
      }
 
+    @Override
+    public void deleteUserSubscription(UUID userSubscriptionId) {
+        userSubscriptionRepository.deleteById(userSubscriptionId);
+    }
+
     private User findUser(UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException(String.format("User with id %s not found", userId)));

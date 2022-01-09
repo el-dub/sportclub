@@ -1,6 +1,7 @@
 package com.creo.invention.dev.tsyw.controller;
 
 import com.creo.invention.dev.tsyw.dto.ErrorDto;
+import com.creo.invention.dev.tsyw.dto.usersubscription.UpdateUserSubscriptionDto;
 import com.creo.invention.dev.tsyw.service.UserService;
 import com.creo.invention.dev.tsyw.service.UserSubscriptionService;
 import com.creo.invention.dev.tsyw.dto.usersubscription.CreateUserSubscriptionDto;
@@ -56,10 +57,9 @@ public class UserSubscriptionController {
     }
 
     @PatchMapping("/update")
-    public void updateUserSubscription() {
-
+    public void updateUserSubscription(@RequestBody UpdateUserSubscriptionDto dto) {
+        userSubscriptionService.updateUserSubscription(dto);
     }
-
 
     @GetMapping("/visit/{userSubscriptionId}")
     public UserSubscriptionDto removeOneVisit(@PathVariable UUID userSubscriptionId) {

@@ -2,6 +2,7 @@ package com.creo.invention.dev.tsyw.service.impl;
 
 import com.creo.invention.dev.tsyw.dto.mapper.UserSubscriptionMapper;
 import com.creo.invention.dev.tsyw.dto.usersubscription.CreateUserSubscriptionDto;
+import com.creo.invention.dev.tsyw.dto.usersubscription.UpdateUserSubscriptionDto;
 import com.creo.invention.dev.tsyw.dto.usersubscription.UserSubscriptionDto;
 import com.creo.invention.dev.tsyw.exception.NotFoundException;
 import com.creo.invention.dev.tsyw.model.Subscription;
@@ -65,6 +66,17 @@ public class UserSubscriptionServiceImpl implements UserSubscriptionService {
     @Override
     public void deleteUserSubscription(UUID userSubscriptionId) {
         userSubscriptionRepository.deleteById(userSubscriptionId);
+    }
+
+    @Override
+    public void updateUserSubscription(UpdateUserSubscriptionDto dto) {
+        var subOptional = userSubscriptionRepository.findById(dto.getId());
+        if (subOptional.isEmpty())
+            throw new RuntimeException("no subscription with such id");
+        var sub = subOptional.get();
+        sub.setVisitsNumber(dto.getVisitsNumber());
+        sub.setEndTime(dto.getEndTime());
+        userSubscriptionRepository.save(sub);
     }
 
     private User findUser(UUID userId) {
